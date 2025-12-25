@@ -8,6 +8,7 @@ export const Navbar = () => {
   const links = [
     { name: 'Home', path: '/' },
     { name: 'Ecosystem', path: '/ecosystem' },
+    { name: 'Simulator', path: '/simulator' },
     { name: 'Investment', path: '/investment' },
   ];
 
