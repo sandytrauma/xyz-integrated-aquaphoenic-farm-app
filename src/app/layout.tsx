@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import { Metadata } from "next";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: '--font-mono' });
@@ -19,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         {children}
         <footer className="py-12 border-t border-slate-200 text-center text-slate-400 text-[10px] font-mono uppercase tracking-widest">
-          System Authentication: Verified Circular Loop © 2025
+          System Authentication: Verified Circular Loop © 2025 | website built and managed by <Link href="https://kumarsandeepportfolio.vercel.app/" target="blank">SandyTrauma</Link>
         </footer>
       </body>
     </html>
