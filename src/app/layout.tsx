@@ -1,28 +1,25 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
+import { Metadata } from "next";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: '--font-mono' });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-const inter = Inter({ subsets: ["latin"] });
+export const metadata: Metadata = {
+  title: "EcoCycle OS | Integrated Circular Farming",
+  description: "Advanced management system for Cow-Goat-Hen-Fish ecosystems.",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-slate-50 antialiased text-slate-900`}>
+    <html lang="en" className={`${inter.variable} ${mono.variable} scroll-smooth`}>
+      <body className="bg-slate-50 text-slate-900 antialiased font-sans">
         <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_#f0fdf4,_transparent_50%),_radial-gradient(circle_at_bottom_left,_#f0f9ff,_transparent_50%)]" />
         <Navbar />
         {children}
-        <footer className="py-10 border-t border-slate-200 text-center text-slate-400 text-xs">
-          © 2025 EcoCycle Farm System • Built for a Sustainable Future
+        <footer className="py-12 border-t border-slate-200 text-center text-slate-400 text-[10px] font-mono uppercase tracking-widest">
+          System Authentication: Verified Circular Loop © 2025
         </footer>
       </body>
     </html>

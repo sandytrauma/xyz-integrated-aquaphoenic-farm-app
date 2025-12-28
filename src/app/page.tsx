@@ -1,77 +1,71 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, Leaf, Waves, Zap } from "lucide-react";
+import { Activity, Database, Repeat, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { CycleFlow } from "@/components/sections/CycleFlow";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main className="relative">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs uppercase tracking-widest mb-8"
-          >
-            <Zap size={14} /> The Future of Agriculture
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-6xl md:text-8xl font-black tracking-tighter mb-8 bg-gradient-to-b from-slate-900 to-slate-600 bg-clip-text text-transparent"
-          >
-            Waste is just <br /> <span className="text-emerald-500">hidden energy.</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12"
-          >
-            We've engineered a self-sustaining ecosystem where cow waste fuels plant growth, 
-            goats nourish the soil, and hens sustain our aquatic life.
-          </motion.p>
-          
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/ecosystem" className="px-8 py-4 bg-emerald-500 text-white rounded-2xl font-bold shadow-xl shadow-emerald-200 hover:bg-emerald-600 transition-all flex items-center gap-2">
-              Explore the Cycle <ArrowRight size={18} />
-            </Link>
-            <Link href="/investment" className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition-all">
-              View Business Plan
-            </Link>
+    <main className="pt-32 pb-20 px-4 md:px-10 max-w-7xl mx-auto">
+      <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+          <div className="flex items-center gap-2 text-emerald-600 font-mono text-[10px] font-bold mb-2 uppercase tracking-[0.3em]">
+            <Activity size={14} className="animate-pulse" /> System Node: Active
+          </div>
+          <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-none">Bio-Circular <br />Management.</h1>
+        </motion.div>
+        <div className="flex gap-3">
+          <Link href="/simulator" className="px-6 py-4 bg-slate-900 text-white rounded-2xl font-bold text-sm hover:bg-emerald-600 transition-all shadow-xl shadow-slate-200">Open Simulator</Link>
+        </div>
+      </header>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <StatCard label="Nitrogen Recovery" val="94.2%" trend="+0.4%" />
+        <StatCard label="Biomass Yield" val="2.4t" trend="Monthly" />
+        <StatCard label="Feed Independence" val="89%" trend="Target 95%" />
+        <StatCard label="System Health" val="Stable" trend="Active" />
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-sm">
+          <h3 className="text-xl font-black mb-8 flex items-center gap-2 uppercase tracking-tighter"><Repeat size={20}/> Integrated Loop Topology</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {['Cow Shed', 'Compost Bay', 'Fodder Deck', 'Goat Habitat', 'Poultry Tier', 'Damp Pool'].map((node, i) => (
+              <div key={i} className="group p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-emerald-500 transition-all cursor-crosshair">
+                <p className="text-[10px] font-mono text-slate-400 mb-1">NODE_0{i+1}</p>
+                <p className="font-bold text-slate-800">{node}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
 
-      {/* Quick Stats Section */}
-      <section className="py-20 max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
-        {[
-          { icon: <Leaf className="text-emerald-500" />, title: "100% Organic", desc: "No chemical fertilizers used." },
-          { icon: <Waves className="text-sky-500" />, title: "Water Efficient", desc: "Closed-loop aquaponic system." },
-          { icon: <Zap className="text-amber-500" />, title: "Zero Waste", desc: "Every byproduct is an input." },
-        ].map((item, i) => (
-          <motion.div 
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="p-8 bg-white/50 backdrop-blur-sm rounded-3xl border border-white"
-          >
-            <div className="mb-4">{item.icon}</div>
-            <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-            <p className="text-slate-500">{item.desc}</p>
-          </motion.div>
-        ))}
-      </section>
-
-      <section className="py-20 bg-slate-900 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-16 text-emerald-400">The Biological Engine</h2>
-          <CycleFlow />
+        <div className="bg-slate-900 text-white rounded-[2.5rem] p-8 md:p-12">
+          <h3 className="text-lg font-bold mb-8 flex items-center gap-2 font-mono uppercase tracking-widest text-emerald-400"><Database size={18}/> Registry</h3>
+          <div className="space-y-6">
+            <InfoItem label="Capra Hircus" desc="Optimized Boer-Beetal Goat hybrids." />
+            <InfoItem label="Pennisetum" desc="High-protein Super Napier Grass." />
+            <InfoItem label="Oreochromis" desc="Tilapia stock; pH buffered." />
+          </div>
         </div>
-      </section>
+      </div>
     </main>
+  );
+}
+
+function StatCard({ label, val, trend }: any) {
+  return (
+    <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 font-mono">{label}</p>
+      <div className="text-2xl font-black text-slate-900 tracking-tighter">{val}</div>
+      <p className="text-[10px] text-emerald-500 font-bold font-mono">{trend}</p>
+    </div>
+  );
+}
+
+function InfoItem({ label, desc }: any) {
+  return (
+    <div className="border-b border-slate-800 pb-4">
+      <p className="text-emerald-400 font-mono text-xs mb-1 uppercase tracking-tighter">{label}</p>
+      <p className="text-slate-400 text-[11px] leading-relaxed">{desc}</p>
+    </div>
   );
 }
