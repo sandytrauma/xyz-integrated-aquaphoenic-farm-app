@@ -16,6 +16,7 @@ export default function Navbar() {
     { name: "Informatics", path: "/science" },
     { name: "Simulator", path: "/simulator" },
     { name: "ROI", path: "/investment" },
+    { name: "Admin", path: "/admin" },
   ];
 
   return (
