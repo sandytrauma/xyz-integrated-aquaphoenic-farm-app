@@ -1,6 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/Card";
+import InfographicFlow from "@/components/infographicflow/InfographicFlow";
+
+
 
 const stages = [
   { 
@@ -57,6 +60,9 @@ export default function EcosystemPage() {
           </motion.div>
         ))}
       </div>
+      <section className="pt-32 pb-20 px-4 md:px-10">
+      <InfographicFlow />
+    </section>
     </main>
   );
 }
